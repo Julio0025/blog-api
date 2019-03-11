@@ -30,7 +30,7 @@ def soundex_search(request, pk, keyword):
     :param request:
     :param pk:
     :param keyword:
-    :return:
+    :return matched words:
     """
     try:
         post = Post.objects.get(pk=pk)
