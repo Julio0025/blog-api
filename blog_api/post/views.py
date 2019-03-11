@@ -1,7 +1,6 @@
-from rest_framework.decorators import action, api_view
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
-from pyphonetics import Soundex
 
 from post.functions import soundex_filter
 from post.permissions import PostPermissions
@@ -10,10 +9,13 @@ from .models import Post
 
 
 class PostViewSet(ModelViewSet):
+    """
+    Post crud class
+    """
     permission_classes = (PostPermissions, )
     queryset = Post.objects.all()
 
-    def get_serializer_class(self, *args, **kwargs):
+    def get_serializer_class(self):
         if self.action == 'retrieve':
             return PostDetailSerializer
         elif self.action in ['create', 'update']:
@@ -23,6 +25,13 @@ class PostViewSet(ModelViewSet):
 
 @api_view(['GET'])
 def soundex_search(request, pk, keyword):
+    """
+    post retrieve function that returns matched words with a given keyword
+    :param request:
+    :param pk:
+    :param keyword:
+    :return:
+    """
     try:
         post = Post.objects.get(pk=pk)
     except Post.DoesNotExist:
@@ -30,8 +39,3 @@ def soundex_search(request, pk, keyword):
 
     matched_words = soundex_filter(post.content, keyword)
     return Response({'matched_words': matched_words})
-
-
-
-
-
