@@ -1,5 +1,5 @@
 # blog-api
-This is a django-rest blog api that has user post create/remove/update/delete methods, user session authentication, logout and single post content soundex filter.
+This is a django-rest api blog. It has user post CRUD and soundex post content search. 
 
 ## To get started you will need
 ###
@@ -7,53 +7,61 @@ This is a django-rest blog api that has user post create/remove/update/delete me
 * django 1.11.*
 ###
 
-# To get things running
-Clone the repository
+# Getting started
 
-```commandline
-git clone https://github.com/Julio0025/blog-api.git
-```
+1) Clone the repository
 
-Create virtual environment (optional but highly advisable)
+	```commandline
+	git clone https://github.com/Julio0025/blog-api.git
+	```
 
-```commandline
-cd blog_api
-virtualenv --python=python3 venv
+2) Create a virtual environment (optional but highly advisable)
 
-```
-activate venv 1) windows 2) linux/unix
-```commandline
-venv\scripts\activate
-source venv/bin/activate
-```
+	```commandline
+	cd blog_api
+	virtualenv --python=python3 venv
+	```
 
-install required pip packages
+3) Activate the virtual environment
 
-```commandline
-pip install -r requirement_list.txt
-```
+	a) windows 
+	```commandline
+	venv\scripts\activate
+	```
 
-run server
+	b) linux/unix
+	```commandline 
+	source venv/bin/activate
+	```
 
-```commandline
-cd blog_api
-python manage.py runserver
-```
+4) Install the required pip packages
+
+	```commandline
+	pip install -r requirement_list.txt
+	```
+
+5) Run the Django development server
+
+	```commandline
+	cd blog_api
+	python manage.py runserver
+	```
+
 
 # API Usage
 Browsable api is enabled go to url 
-```commandline
-/api/post/
-```
+	```commandline
+	/api/post/
+	```
 To use soundex filtering navigate to. ID 
-```commandline
-/api/post/{ID}/{KEYWORD}/
-```
+	```commandline
+	/api/post/{ID}/{KEYWORD}/
+	```
 
 To run tests
-```commandline
-python manage.py test
-```
+	```commandline
+	python manage.py test
+	```
 
 
 
