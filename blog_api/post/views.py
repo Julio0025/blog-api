@@ -9,9 +9,6 @@ from .models import Post
 
 
 class PostViewSet(ModelViewSet):
-    """
-    Post crud class
-    """
     permission_classes = (PostPermissions, )
     queryset = Post.objects.all()
 
