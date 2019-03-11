@@ -1,15 +1,29 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, SerializerMethodField
 from django.utils import timezone
 
 from post.models import Post
 
 
-class PostSerializer(ModelSerializer):
+class PostListSerializer(ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ('title', 'content')
+        fields = ('id', 'title', 'created')
 
+
+class PostDetailSerializer(ModelSerializer):
+    user = SerializerMethodField()
+
+    @staticmethod
+    def get_user(obj):
+        return obj.user.username
+
+    class Meta:
+        model = Post
+        fields = ('title', 'content', 'created', 'edited', 'user')
+
+
+class PostCreateEditSerializer(ModelSerializer):
     def create(self, validated_data):
         user = self.context['request'].user
         return Post.objects.create(user=user, **validated_data)
@@ -20,6 +34,12 @@ class PostSerializer(ModelSerializer):
         instance.edited = timezone.now()
         instance.save()
         return instance
+
+    class Meta:
+        model = Post
+        fields = ('title', 'content')
+
+
 
 
 
