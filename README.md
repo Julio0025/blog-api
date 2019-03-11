@@ -50,5 +50,11 @@ To use soundex filtering navigate to. ID
 /api/post/{ID}/{KEYWORD}/
 ```
 
+To run tests
+```commandline
+python manage.py test
+```
+
+
 
 
