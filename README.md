@@ -54,12 +54,12 @@ Browsable api is enabled go to url
 	/api/post/
 	```
 To use soundex filtering navigate to. ID 
-	```commandline
+	```
 	/api/post/{ID}/{KEYWORD}/
 	```
 
 To run tests
-	```commandline
+	```
 	python manage.py test
 	```
 
